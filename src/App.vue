@@ -21,8 +21,7 @@
     <page
     v-bind:is="curPageComp"
     v-bind:msg=curComp
-    class="comp">
-    </page>
+    class="comp"></page>
     </div>
   </div>
 </template>
@@ -30,6 +29,7 @@
 <script>
 import Intro from './components/Intro.vue'
 import Data from './components/Data.vue'
+import apiCall from './assets/api_response.json'
 
 export default {
   name: 'app',
@@ -40,9 +40,9 @@ export default {
   data: function() {
     return {
       curComp: 'Intro',
-      comps: ['Intro', 'Data']
+      comps: ['Intro', 'Data'],
+      wellData: apiCall.data
     }
-    
   },
   computed: {
     curPageComp: function() {

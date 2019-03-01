@@ -7,8 +7,17 @@
     </div>
     <div class="components">
         <div class="comp1">
-            <WellPicker/>
-        </div>
+            <div id="WellPicker" style="width: 280px; height: 1000px">
+              <h1>Pick a Well</h1>
+              <div class="list-group" id="list-tab" role="tablist">
+                  <WellPicker
+                    v-for="well in simplifiedWells()"
+                    v-bind:key="well"
+                    v-bind:title="well"
+                  ></WellPicker>
+              </div>
+            </div>
+        </div>    
         <div class="comp2">
             <Chart/>
         </div>
@@ -19,12 +28,29 @@
 <script>
 import Chart from './Visulizer/Chart.vue'
 import WellPicker from './Visulizer/WellPicker.vue'
+import apiCall from '../assets/api_response.json'
 
 export default {
     name: "Data",
     components: {
         WellPicker,
         Chart
+    },
+    data: function() {
+      return {
+        wells: apiCall.data
+      }
+    },
+    methods: {
+      simplifiedWells() {
+        let simpleWells = [];
+        for(let i = 0; i < this.wells.length; i++) {
+          if(!simpleWells.includes(this.wells[i].wellId)) {
+            simpleWells.push(this.wells[i].wellId);
+          }
+        }
+        return simpleWells;
+      }
     }
 }
 </script>
@@ -41,6 +67,10 @@ export default {
 }
 .comp2 {
     display:inline-block
+}
+.list-group {
+  max-height: 1000px;
+  overflow: scroll;
 }
 </style>
 
