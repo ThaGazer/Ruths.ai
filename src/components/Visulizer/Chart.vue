@@ -1,8 +1,13 @@
 <template>
   <div class="echarts">
-    <IEcharts
-      :option="bar"
-    />
+    <!--<div
+    v-for="shownWells in showTheseWells"
+    v-bind:key=shownWells>-->
+      <IEcharts
+        :option="bar"
+      />
+      <button @click="doRandom">Random</button>
+    <!--</div>-->
   </div>
 </template>
 
@@ -46,7 +51,7 @@
     methods: {
       doRandom() {        
         let data = [];
-        for (let i = 0, min = 5, max = 99; i < 6; i++) {
+        for (let i = 0, min = .01, max = 2; i < 12; i++) {
           data.push(Math.floor(Math.random() * (max + 1 - min) + min));
         }
         this.bar.series[0].data = data;
