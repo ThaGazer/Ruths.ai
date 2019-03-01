@@ -58,4 +58,7 @@ export default {
   text-align: center;
   color: #000000;
 }
+.navbar-nav {
+  cursor: pointer;
+}
 </style>
