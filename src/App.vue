@@ -1,17 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="nav-header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="./assets/ruths_ai.png" width="100" height="50" class="d-inline-block align-top" alt="">
+        </a>
+        <!--align like a actual nav bar-->
+        <div class="navbar-nav">
+          <a
+            v-for="comp in comps"
+            v-bind:key="comp"
+            v-bind:class="['nav-item nav-link', {active: curComp === comp}]"
+            v-on:click="curComp = comp">
+            {{comp}}
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="pages">
+    <page
+    v-bind:is="curPageComp"
+    v-bind:msg=curComp
+    class="comp">
+    </page>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Intro from './components/Intro.vue'
+import Data from './components/Data.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Intro,
+    Data
+  },
+  data: function() {
+    return {
+      curComp: 'Intro',
+      comps: ['Intro', 'Data']
+    }
+    
+  },
+  computed: {
+    curPageComp: function() {
+      return this.curComp;
+    }
   }
 }
 </script>
@@ -19,10 +55,7 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000000;
 }
 </style>
