@@ -20,23 +20,25 @@
     data: () => ({
       bar: {
         title: {
-          text: 'ECharts Hello World'
+          text: 'Well Data'
         },
         tooltip: {},
+        legend: {
+        },
         xAxis: {
-          data: ['Shirt', 'Sweater', 'Chiffon Shirt', 'Pants', 'High Heels', 'Socks']
+          data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {},
         series: [
           {
-            name: 'Sales',
+            name: 'Oil Rate',
             type: 'line',
-            data: [5, 20, 36, 10, 10, 20]
+            data: [0.73, 1.02, 0.2, 0.56, 0, 0, 0.04, 0.27, 0.59, 0.26, 0.52, 0.89]
           },
           {
-            name: 'Saless',
+            name: 'Gas Rate',
             type: 'line',
-            data: [10, 4, 15, 20, 30, 20]
+            data: [17.42, 39.64, 14.91, 25.27, 68.27, 3.07, 12.75, 33.96, 16.26, 11.98, 17.14, 36.8]
           }
         ]
       }
