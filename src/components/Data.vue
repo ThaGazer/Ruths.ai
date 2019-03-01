@@ -14,12 +14,16 @@
                     v-for="well in simplifiedWells()"
                     v-bind:key="well"
                     v-bind:title="well"
+                    v-on:well-select="changeChartDisp"
                   ></WellPicker>
               </div>
             </div>
         </div>    
         <div class="comp2">
-            <Chart/>
+            <Chart
+            v-bind:showTheseWells="usrWells"
+            v-bind:wells="wells"
+            ></Chart>
         </div>
     </div>
   </div>
@@ -38,7 +42,8 @@ export default {
     },
     data: function() {
       return {
-        wells: apiCall.data
+        wells: apiCall.data,
+        usrWells: []
       }
     },
     methods: {
@@ -50,6 +55,13 @@ export default {
           }
         }
         return simpleWells;
+      },
+      changeChartDisp(id) {
+        if(this.usrWells.includes(id)) {
+          this.usrWells.splice(this.usrWells.indexOf(id), 1);
+        } else {
+          this.usrWells.push(id);
+        }
       }
     }
 }
