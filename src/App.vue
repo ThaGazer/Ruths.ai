@@ -6,7 +6,7 @@
           <img src="./assets/ruths_ai.png" width="100" height="50" class="d-inline-block align-top" alt="">
         </a>
         <!--align like a actual nav bar-->
-        <div class="navbar-nav">
+        <div class="navbar-nav ml-auto w-100 justify-content-end">
           <a
             v-for="comp in comps"
             v-bind:key="comp"
